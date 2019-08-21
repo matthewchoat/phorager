@@ -8,7 +8,11 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    redirect_to root_path
+    if @post.valid?
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
@@ -16,6 +20,5 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:message)
   end
-
-
+  
 end
