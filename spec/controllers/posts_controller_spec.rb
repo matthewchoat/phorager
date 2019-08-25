@@ -1,6 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
+  describe "posts#destroy action" do
+    it "should allow a user to destroy posts" do
+      post = FactoryBot.create(:post)
+      delete :destroy, params: { id: post.id }
+      expect(response).to redirect_to root_path
+      post = Post.find_by_id(post.id)
+      expect(post).to eq nil
+    end
+
+    it "should return a 404 message if we cannot find a post with the id that is specified" do
+      delete :destroy, params: { id: 'EXAMPLEPOST' }
+      expect(response).to have_http_status(:not_found)
+    end
+  end
 
   describe "posts#update action" do
     it "should allow users to successfully update posts" do
