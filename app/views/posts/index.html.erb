@@ -1,1 +1,8 @@
 <h1> Phorager </h1>
+
+<% @posts.each do |post| %>
+<div>
+  <%= post.message %>
+  <%= image_tag post.picture.to_s, class: 'img-fluid' %>
+</div>
+<% end %>

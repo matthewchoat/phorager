@@ -39,7 +39,7 @@ RSpec.describe PostsController, type: :controller do
       post = FactoryBot.create(:post)
       user = FactoryBot.create(:user)
       sign_in user
-      patch :update, params: { id: post.id, gram: { message: 'wahoo' } }
+      patch :update, params: { id: post.id, post: { message: 'wahoo' } }
       expect(response).to have_http_status(:forbidden)
     end
 
