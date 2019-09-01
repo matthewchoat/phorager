@@ -153,7 +153,13 @@ RSpec.describe PostsController, type: :controller do
       user = FactoryBot.create(:user)
       sign_in user
 
-      post :create, params: { post: { message: 'Hello!' } }
+      post :create, params: {
+        post: {
+          message: 'Hello!',
+          picture: fixture_file_upload("/picture.png", 'image/png')
+        }
+      }
+
       expect(response).to redirect_to root_path
 
       post = Post.last
