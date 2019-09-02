@@ -1,8 +1,37 @@
-<h1> Phorager </h1>
+<div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+  <% @posts.each do |post| %>
+  <div class="card">
+    <div class="handle"><%= post.user.email %></div>
+    <%= image_tag post.picture.to_s, class: 'img-fluid' %>
+    <p>
+      <%= post.message %>
+    </p>
 
-<% @posts.each do |post| %>
-<div>
-  <%= post.message %>
-  <%= image_tag post.picture.to_s, class: 'img-fluid' %>
+    <div class="post-actions float-right">
+      <% if current_user && current_user == post.user %>
+      <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to 'Delete', post_path(post), method: :delete, data: {confirm: 'Are you sure you want to delete this post?'} %>
+
+      <% end %>
+    </div>
+    <br class="clear-fix" />
+    <div class="comments">
+      <h3>Comments</h3>
+        <% post.comments.each do |comment| %>
+          <div class="comment">
+            <span class="comment_handle">
+              <%= comment.user.email %>
+            </span>
+
+            <%= comment.message %>
+          </div>
+        <% end %>
+      <h4>Add a comment</h4>
+      <%= simple_form_for Comment.new, url: post_comments_path(post) do |f| %>
+        <%= f.input :message %>
+        <%= f.submit 'Add Comment', class: 'my-btn' %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
 </div>
-<% end %>

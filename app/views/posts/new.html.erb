@@ -1,8 +1,12 @@
+<div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 card form">
+
 <h1>New Post</h1>
 
 <%= simple_form_for @post do |f| %>
   <%= f.input :picture %>
   <%= f.input :message %>
-  <%= f.submit "Post!" %>
+  <%= f.submit "Post!", class: 'my-btn' %>
 
 <% end %>
+
+</div>
