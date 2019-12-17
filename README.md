@@ -1,24 +1,7 @@
-# README
+<h1>Phorager</h1>
+<h2>A Photo Uploading Platform Created Using Test-Driven Development </h2>
+An Instagram clone that was built using industry-standard, test-driven development following numerous red/green/refactor cycles.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<img src="https://matthewchoat.netlify.com/grammable.png" />
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+View the Heroku deploy of this applicaion and start uploading your own photos here: https://phorager.herokuapp.com/
